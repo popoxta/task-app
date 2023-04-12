@@ -1,17 +1,17 @@
 import {useState} from "react";
 
 export default function TasksList({tasks, handleEdit, handleDelete}) {
-
-    console.log('rendering')
     return (
-        <ol>
-            {tasks.map(task => <Task
-                key={task.id}
-                task={task}
-                handleEdit={handleEdit}
-                handleDelete={() => handleDelete(task.id)}
-            />)}
-        </ol>
+        <ul>
+            {tasks.map(task =>
+                <Task
+                    key={task.id}
+                    task={task}
+                    handleEdit={handleEdit}
+                    handleDelete={() => handleDelete(task.id)}
+                />
+            )}
+        </ul>
     )
 }
 
@@ -21,21 +21,25 @@ function Task({task, handleEdit, handleDelete}) {
     return (
         isEditing
             ?
-            <>
+            <div className={'task-item'}>
                 <li><input
                     value={task.name}
                     onChange={e => handleEdit({...task, name: e.target.value})}
                 /></li>
 
-                <button onClick={e => setIsEditing(false)}>Save</button>
-                <button onClick={handleDelete}>Delete</button>
-            </>
+                <div>
+                    <button onClick={e => setIsEditing(false)}>save</button>
+                    <button onClick={handleDelete}>x</button>
+                </div>
+            </div>
             :
-            <>
+            <div className={'task-item'}>
                 <li>{task.name}</li>
-                <button onClick={() => setIsEditing(true)}>Edit</button>
-                <button onClick={handleDelete}>Delete</button>
-            </>
+                <div>
+                    <button onClick={() => setIsEditing(true)}>edit</button>
+                    <button onClick={handleDelete}>x</button>
+                </div>
+            </div>
 
     )
 }

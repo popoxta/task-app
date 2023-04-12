@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+:root {
+    --grey: #F4F4F4;
+    --darker-grey: #EEF0F2;
+    --darkest-grey: #8D8F91FF;
+    --coral: #FF6666;
+    --dark: #1D1E2C;
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    background-color: var(--grey);
+}
+
+body > div {
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: max(10%, 10rem);
+}
+
+.tasks-box {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 15px 25px 0 rgba(137, 137, 137, 0.26);
+
+    width: min(80%, 40rem);
+    max-height: 70vh;
+    overflow: auto;
+
+    padding: 2rem 3rem;
+}
+
+.tasks-box h1 {
+    font-size: 3rem;
+    font-weight: 900;
+
+    border-bottom: 0.3rem solid var(--coral);
+}
+
+.task-item, form {
+    list-style: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-bottom: 0.2rem solid var(--darker-grey);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 1rem 1rem 0.3rem;
+    padding-left: 1rem;
+}
+
+form {
+    margin-top: 2rem;
+}
+
+li, input {
+    overflow: hidden;
+}
+
+.task-item > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+button {
+    font-size: 1.1rem;
+    font-weight: 700;
+
+    background: none;
+    border: none;
+}
+
+button:hover {
+    color: var(--coral);
+    cursor: pointer;
+}
+
+input {
+    color: var(--darkest-grey);
+    border: none;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+input:focus {
+    outline: none;
+}
+
+input:focus li::before {
+    display: inline-block;
+    pointer-events: none;
+    content: '>';
+}
+
+@media only screen and (max-width: 600px) {
+    :root {
+        font-size: 0.8rem;
+    }
+}

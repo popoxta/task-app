@@ -1,14 +1,14 @@
 import {useState} from "react";
 
-export default function AddTask({handleAddTask}){
+export default function AddTask({handleAddTask}) {
     const [text, setText] = useState('')
 
-    function addTask(){
+    function addTask() {
         text ? handleAddTask(text) : alert('Please enter a title for your task')
         setText('')
     }
 
-    return(
+    return (
         <form>
             <input type={'text'}
                    placeholder={'Add task...'}
@@ -20,9 +20,8 @@ export default function AddTask({handleAddTask}){
                         e.preventDefault()
                         addTask()
                     }}>
-                ADD TASK
+                add
             </button>
         </form>
-
     )
 }

@@ -4,28 +4,28 @@ import AddTask from "./components/AddTask.jsx";
 
 export default function App() {
     const initialTasks = [
-        {id: 0, name: 'taskName'},
-        {id: 1, name: 'taskName2'},
-        {id: 3, name: 'taskName3'},
+        {id: 0, name: 'Welcomeqweeeeeeeeeeeeeeeeeee'},
+        {id: 1, name: 'to'},
+        {id: 3, name: 'Tasky!'},
     ]
     const [tasks, setTasks] = useState(initialTasks)
 
-    function handleChangeTask(changedTask) {
+    function handleChangeTask(changedTask) { // if task id matches, replace task
         setTasks(tasks.map(task => task.id === changedTask.id ? changedTask : task))
     }
 
-    function handleAddTask(name) {
-        const newId = tasks[tasks.length - 1].id + 1 // create new id for new task
+    function handleAddTask(name) { // create new id for new task
+        const newId = tasks[tasks.length - 1].id + 1
         setTasks([...tasks, {id: newId, name}])
     }
 
-    function handleDeleteTask(id) {
-        setTasks(tasks.filter(task => task.id !== id)) // filter out the task with the matching id
+    function handleDeleteTask(id) { // filter out the task with the matching id
+        setTasks(tasks.filter(task => task.id !== id))
     }
 
     return (
-        <div>
-            <h1>TASKS</h1>
+        <div className={'tasks-box'}>
+            <h1>TASKY</h1>
             <AddTask
                 handleAddTask={handleAddTask}
             />
