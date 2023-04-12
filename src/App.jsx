@@ -11,14 +11,30 @@ export default function App() {
 
     function TasksList() {
         return (
-            tasks.map(task => <li key={task.id}>{task.name}</li>)
+            <ol>
+                {tasks.map(task => <Task task={task} key={task.id}/>)}
+            </ol>
+        )
+    }
+
+    function Task({task}) {
+        return (
+            <>
+                <li>{task.name}</li>
+                <button onClick={() => deleteTask(task.id)}>
+                    Delete
+                </button>
+            </>
         )
     }
 
     function addTask(name) {
-        console.log(tasks)
         const newId = tasks[tasks.length - 1].id + 1 // create new id for new task
         setTasks([...tasks, {id: newId, name}])
+    }
+
+    function deleteTask(id) {
+        setTasks(tasks.filter(task => task.id !== id)) // filter out the task with the matching id
     }
 
     return (
@@ -34,9 +50,8 @@ export default function App() {
                         e.preventDefault()
                         text ? addTask(text) : null
                     }}>
-                ADD
+                ADD TASK
             </button>
-
             <TasksList/>
         </div>
     )
