@@ -3,8 +3,7 @@ import {useState} from "react";
 export default function AddTask({handleAddTask}){
     const [text, setText] = useState('')
 
-    function addTask(e){
-        e.preventDefault()
+    function addTask(){
         text ? handleAddTask(text) : alert('Please enter a title for your task')
         setText('')
     }

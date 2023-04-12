@@ -11,7 +11,7 @@ export default function App() {
     const [tasks, setTasks] = useState(initialTasks)
 
     function handleChangeTask(changedTask) {
-        setTasks(tasks.map(task => task.i === changedTask ? changedTask : task))
+        setTasks(tasks.map(task => task.id === changedTask.id ? changedTask : task))
     }
 
     function handleAddTask(name) {
