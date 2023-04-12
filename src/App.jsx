@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import TasksList from "./components/Tasks.jsx";
+import AddTask from "./components/AddTask.jsx";
 
 export default function App() {
     const initialTasks = [
@@ -7,52 +9,31 @@ export default function App() {
         {id: 3, name: 'taskName3'},
     ]
     const [tasks, setTasks] = useState(initialTasks)
-    const [text, setText] = useState('')
 
-    function TasksList() {
-        return (
-            <ol>
-                {tasks.map(task => <Task task={task} key={task.id}/>)}
-            </ol>
-        )
+    function handleChangeTask(changedTask) {
+        setTasks(tasks.map(task => task.i === changedTask ? changedTask : task))
     }
 
-    function Task({task}) {
-        return (
-            <>
-                <li>{task.name}</li>
-                <button onClick={() => deleteTask(task.id)}>
-                    Delete
-                </button>
-            </>
-        )
-    }
-
-    function addTask(name) {
+    function handleAddTask(name) {
         const newId = tasks[tasks.length - 1].id + 1 // create new id for new task
         setTasks([...tasks, {id: newId, name}])
     }
 
-    function deleteTask(id) {
+    function handleDeleteTask(id) {
         setTasks(tasks.filter(task => task.id !== id)) // filter out the task with the matching id
     }
 
     return (
         <div>
             <h1>TASKS</h1>
-
-            <input type={'text'}
-                   placeholder={'Add task...'}
-                   onChange={e => setText(e.target.value)}/>
-
-            <button type={'submit'}
-                    onClick={e => {
-                        e.preventDefault()
-                        text ? addTask(text) : null
-                    }}>
-                ADD TASK
-            </button>
-            <TasksList/>
+            <AddTask
+                handleAddTask={handleAddTask}
+            />
+            <TasksList
+                tasks={tasks}
+                handleEdit={handleChangeTask}
+                handleDelete={handleDeleteTask}
+            />
         </div>
     )
 }
