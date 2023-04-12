@@ -4,7 +4,7 @@ import AddTask from "./components/AddTask.jsx";
 
 export default function App() {
     const initialTasks = [
-        {id: 0, name: 'Welcomeqweeeeeeeeeeeeeeeeeee'},
+        {id: 0, name: 'Welcome'},
         {id: 1, name: 'to'},
         {id: 3, name: 'Tasky!'},
     ]
